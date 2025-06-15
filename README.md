@@ -101,17 +101,17 @@ Note:
 
 ### Value
 
--**bool setValue(uint16_t value)** sets the value of the DAC. 
+- **bool setValue(uint16_t value)** sets the value of the DAC. 
 Returns false if value > maxValue. 
--**uint16_t getValue()** returns the current value (from cache).
--**uint16_t getMaxValue()** returns 4095 for AD7390 and 1023 for AD7391.
+- **uint16_t getValue()** returns the current value (from cache).
+- **uint16_t getMaxValue()** returns 4095 for AD7390 and 1023 for AD7391.
 
 ### Percentage
 
--**bool setPercentage(float percentage)** sets the value of the DAC as percentage 0..100.
+- **bool setPercentage(float percentage)** sets the value of the DAC as percentage 0..100.
 Note the actual value set gets rounded.
 Returns false if percentage < 0 or > 100. 
--**float getPercentage()** returns the percentage set, calculated from the value.
+- **float getPercentage()** returns the percentage set, calculated from the value.
 The percentage can differ a small bit from the percentage set. 
 
 ### Hardware SPI
