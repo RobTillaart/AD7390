@@ -29,6 +29,7 @@
 
 unittest_setup()
 {
+  fprintf(stderr, "AD7390_LIB_VERSION:\t%s\n", (char *) AD7390_LIB_VERSION);
 }
 
 
@@ -39,61 +40,58 @@ unittest_teardown()
 
 unittest(test_begin)
 {
-  fprintf(stderr, "AD7390_LIB_VERSION:\t%s\n", (char *) AD7390_LIB_VERSION);
-  AD5204 pot = AD5204(10, 12, 13);  //  HW SPI by default
-  pot.begin();
-  assertEqual(128, pot.getValue(0));
+  AD7390 myDAC(6, 7, 11, 13);
+  myDAC.begin(0);
+  assertEqual(0, myDAC.getValue());
 
-  pot.begin(42);
-  assertEqual(42, pot.getValue(0));
+  myDAC.begin(42);
+  assertEqual(42, myDAC.getValue());
 }
 
 
-unittest(test_setValue)
+unittest(test_7390_setValue)
 {
-  AD5206 pot = AD5206(10, 12, 13);  //  HW SPI by default
-  pot.begin();
-  assertEqual(128, pot.getValue(0));
+  AD7390 myDAC(6, 7, 11, 13);
+  myDAC.begin(0);
+  assertEqual(0, pot.getValue());
 
-  for (int i = 0; i < pot.pmCount(); i++)
+  for (int i = 0; i < myDac.getMaxValue; i += 200)
   {
-    pot.setValue(i, 35);
-    assertEqual(35, pot.getValue(i));
+    myDAC.setValue(i);
+    assertEqual(i, myDAC.getValue());
   }
+}
 
-  pot.setAll(42);
-  for (int i = 0; i < pot.pmCount(); i++)
+
+unittest(test_7391_setValue)
+{
+  AD7391 myDAC(6, 7, 11, 13);
+  myDAC.begin(0);
+  assertEqual(0, pot.getValue());
+
+  for (int i = 0; i < myDac.getMaxValue; i += 100)
   {
-    assertEqual(42, pot.getValue(i));
+    myDAC.setValue(i);
+    assertEqual(i, myDAC.getValue());
   }
-
-  pot.setAll();
-  for (int i = 0; i < pot.pmCount(); i++)
-  {
-    assertEqual(128, pot.getValue(i));
-  }
-
-  assertFalse(pot.setValue(6, 10));
-
-  AD8400 p8400 = AD8400(10, 12, 13);
-  assertFalse(p8400.setValue(1, 117));
 }
 
 
 unittest(test_setPercentage)
 {
-  AD5206 pot = AD5206(10, 12, 13, 7, 6);  //  SW SPI
-  pot.begin();
-  assertEqualFloat(50, pot.getPercentage(0), 0.5);
+  AD7390 myDAC(6, 7, 11, 13);
+  myDAC.begin(0);
+  assertEqual(0, pot.getValue());
 
-  for (int i = 0; i < pot.pmCount(); i++)
+  for (int i = 0; i < 100; i += 6.28)
   {
-    pot.setPercentage(i, 35);
-    assertEqualFloat(35, pot.getPercentage(i), 0.5);
+    myDAC.setPercentage(i);
+    assertEqualFloat(i, myDAC.getPercentage(), 0.1);
   }
 }
 
 
 unittest_main()
+
 
 //  -- END OF FILE --

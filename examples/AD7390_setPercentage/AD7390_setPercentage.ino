@@ -29,7 +29,7 @@ void setup()
 
 
   SPI.begin();
-  myDAC.begin();
+  myDAC.begin(0);
 
   for (int p = 0; p <= 100; p++)
   {

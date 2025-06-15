@@ -28,7 +28,7 @@ void setup()
   Serial.println();
 
   SPI.begin();
-  myDAC.begin();
+  myDAC.begin(0);
 
   //  test_extremes();
   //  test_sinus();
