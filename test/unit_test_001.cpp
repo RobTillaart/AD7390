@@ -53,9 +53,9 @@ unittest(test_7390_setValue)
 {
   AD7390 myDAC(6, 7, 11, 13);
   myDAC.begin(0);
-  assertEqual(0, pot.getValue());
+  assertEqual(0, myDAC.getValue());
 
-  for (int i = 0; i < myDAC.getMaxValue; i += 200)
+  for (int i = 0; i < myDAC.getMaxValue(); i += 200)
   {
     myDAC.setValue(i);
     assertEqual(i, myDAC.getValue());
@@ -67,9 +67,9 @@ unittest(test_7391_setValue)
 {
   AD7391 myDAC(6, 7, 11, 13);
   myDAC.begin(0);
-  assertEqual(0, pot.getValue());
+  assertEqual(0, myDAC.getValue());
 
-  for (int i = 0; i < myDAC.getMaxValue; i += 100)
+  for (int i = 0; i < myDAC.getMaxValue(); i += 100)
   {
     myDAC.setValue(i);
     assertEqual(i, myDAC.getValue());
