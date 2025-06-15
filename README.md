@@ -92,7 +92,7 @@ TODO
 
 Note: 
 - hardware SPI is 10+ times faster on an UNO than software SPI.
-- software SPI on ESP32 is about equally fast than hardware SPI.
+- software SPI on ESP32 is about equally fast as hardware SPI.
 
 ### Base
 
