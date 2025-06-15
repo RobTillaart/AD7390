@@ -20,12 +20,40 @@ Arduino library for AD7390 / AD7391 12/10 bit SPI DAC.
 
 The library is experimental as not all functionality is tested with hardware.
 
+|  type      |  bits  |  maxValue  |  range °C   |  notes    |
+|:-----------|:------:|:----------:|:------------|:----------|
+|  AD7390    |   12   |    4095    |  -40..+85   |
+|  AD7391    |   10   |    1023    |  -40..+85   |
+|  AD7391IAR |   10   |    1023    |  -40..+125  |
 
-|  type    |  bits  |  maxValue  |  notes    |
-|:---------|:------:|:----------:|:----------|
-|  AD7390  |   12   |    4095    |
-|  AD7391  |   10   |    1023    |
+Check datasheet for all details.
 
+The AD7390 has a Vref input which can be set to any voltage between 0 and Vdd (2.7 .. 5.5 Volt.
+This allows the output to vary between 0 volt and approx. Vref -1 LSB. 
+See datasheet page 8.
+
+The device does not support reading the set value, so the library caches the 
+last value set to provide this.
+Furthermore the library provides a "percentage" functions to set and get the output
+in a range from 0 to 100.0 %.
+
+As always feedback is welcome.
+
+
+### Hardware
+
+See datasheet page 4.
+
+```
+        top view
+       +--------+
+   LD  | 1    8 |  Vref
+  CLK  | 2    7 |  Vdd
+  SDI  | 3    6 |  Vout
+  CLR  | 4    5 |  GND
+       +--------+
+
+```
 
 ### Related
 
@@ -40,6 +68,11 @@ Mainly other DAC libraries.
 - https://github.com/RobTillaart/AD5680  (18 bit DAC)
 - https://github.com/RobTillaart/MAX520 I2C, 4, 8 channel, 8 bit
 - https://github.com/RobTillaart/MCP4725 I2C, 1 channel, 12 bit
+
+
+## Performance
+
+TODO
 
 
 ## Interface
