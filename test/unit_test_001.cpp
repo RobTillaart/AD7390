@@ -98,7 +98,7 @@ unittest(test_setVoltage)
   assertEqual(0, myDAC.getValue());
 
   myDAC.setRefVoltage(5.0);
-  for (int i = 0; i <= 5.0; i += 0.25)
+  for (float i = 0; i <= 5.0; i += 0.25)
   {
     myDAC.setVoltage(i);
     assertEqualFloat(i, myDAC.getVoltage(), 0.1);
@@ -106,7 +106,6 @@ unittest(test_setVoltage)
 }
 
 
-/*
 unittest(test_setRefVoltage)
 {
   AD7390 myDAC(6, 7, 11, 13);
@@ -125,7 +124,6 @@ unittest(test_setRefVoltage)
   assertFalse(myDAC.setVoltage(5.0));
   assertTrue(myDAC.setVoltage(2.0));
 }
-*/
 
 
 unittest_main()
