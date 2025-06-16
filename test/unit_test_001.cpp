@@ -117,12 +117,12 @@ unittest(test_setRefVoltage)
   assertTrue(myDAC.setRefVoltage(0.0));
 
   assertTrue(myDAC.setRefVoltage(5.5));
-  assertFalse(myDac.setVoltage(-1.0));
-  assertTrue(myDac.setVoltage(5.0));
+  assertFalse(myDAC.setVoltage(-1.0));
+  assertTrue(myDAC.setVoltage(5.0));
 
   assertTrue(myDAC.setRefVoltage(2.5));
-  assertFalse(myDac.setVoltage(5,.0));
-  assertTrue(myDac.setVoltage(2.0));
+  assertFalse(myDAC.setVoltage(5,.0));
+  assertTrue(myDAC.setVoltage(2.0));
 }
 
 
