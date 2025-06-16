@@ -1,5 +1,5 @@
 //
-//    FILE: AD7391_setPercentage.ino
+//    FILE: AD7390_setPercentage.ino
 //  AUTHOR: Rob Tillaart
 // PURPOSE: demo
 //     URL: https://github.com/RobTillaart/AD7390
@@ -7,14 +7,14 @@
 
 #include "AD7390.h"
 
-uint32_t start;
+uint32_t start, stop;
 
 
 //  select, reset, data, clock == SOFTWARE SPI
-//  AD7391 myDAC(6, 7, 11, 13);
+//  AD7390 myDAC(6, 7, 11, 13);
 
 //  select, reset, &SPI === HW SPI UNO clock = 13, data = 11
-AD7391 myDAC(6, 7, &SPI);
+AD7390 myDAC(6, 7, &SPI);
 
 
 void setup()
@@ -31,10 +31,6 @@ void setup()
   SPI.begin();
   myDAC.begin(0);
 
-  Serial.print("MAX: ");
-  Serial.println(myDAC.getMaxValue());
-  Serial.println();
-
   for (int p = 0; p <= 100; p++)
   {
     myDAC.setPercentage(p);
@@ -42,8 +38,6 @@ void setup()
     Serial.print(p);
     Serial.print('\t');
     Serial.print(pp, 1);
-    Serial.print('\t');
-    Serial.print(myDAC.getValue());
     Serial.print('\n');
   }
 

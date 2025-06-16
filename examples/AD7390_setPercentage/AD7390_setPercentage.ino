@@ -7,7 +7,7 @@
 
 #include "AD7390.h"
 
-uint32_t start, stop;
+uint32_t start;
 
 
 //  select, reset, data, clock == SOFTWARE SPI
