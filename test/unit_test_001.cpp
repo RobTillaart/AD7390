@@ -91,7 +91,6 @@ unittest(test_setPercentage)
 }
 
 
-/*
 unittest(test_setVoltage)
 {
   AD7390 myDAC(6, 7, 11, 13);
@@ -107,6 +106,7 @@ unittest(test_setVoltage)
 }
 
 
+/*
 unittest(test_setRefVoltage)
 {
   AD7390 myDAC(6, 7, 11, 13);
