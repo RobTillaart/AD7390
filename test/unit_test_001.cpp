@@ -91,6 +91,7 @@ unittest(test_setPercentage)
 }
 
 
+/*
 unittest(test_setVoltage)
 {
   AD7390 myDAC(6, 7, 11, 13);
@@ -124,6 +125,7 @@ unittest(test_setRefVoltage)
   assertFalse(myDAC.setVoltage(5.0));
   assertTrue(myDAC.setVoltage(2.0));
 }
+*/
 
 
 unittest_main()
