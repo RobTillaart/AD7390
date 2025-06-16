@@ -1,5 +1,5 @@
 //
-//    FILE: AD7390_setPercentage.ino
+//    FILE: AD7390_setVoltage.ino
 //  AUTHOR: Rob Tillaart
 // PURPOSE: demo
 //     URL: https://github.com/RobTillaart/AD7390
@@ -7,7 +7,7 @@
 
 #include "AD7390.h"
 
-uint32_t start, stop;
+uint32_t start;
 
 
 //  select, reset, data, clock == SOFTWARE SPI
