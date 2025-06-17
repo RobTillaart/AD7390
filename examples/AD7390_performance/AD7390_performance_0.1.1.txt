@@ -1,0 +1,18 @@
+
+
+AD7390_performance.ino
+AD7390_LIB_VERSION: 0.1.1
+
+SW SPI
+
+test_timing
+1000 x setValue():	102136
+1000 x getValue():	884
+
+HW SPI
+
+test_timing
+1000 x setValue():	7700
+1000 x getValue():	876
+
+
