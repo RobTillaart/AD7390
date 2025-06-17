@@ -91,7 +91,7 @@ Times in microseconds per 1000 calls.
 |        |                 |          |         |
 | SW-SPI |  setValue       | 204332   |         |
 | SW-SPI |  getValue       |    884   |         |  cached value
-| HW-SPI |  setPercentage  | 282692   |         |
+| SW-SPI |  setPercentage  | 282692   |         |
 
 
 Note: 15404 micros for 1000 calls, means the max update speed 
