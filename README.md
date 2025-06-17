@@ -83,17 +83,24 @@ Mainly other DAC libraries.
 
 Times in microseconds per 1000 calls.
 
-|  mode  |  function  |  UNO R3  |  ESP32  |  notes  |
-|:------:|:-----------|:--------:|:-------:|:--------|
-| HW-SPI |  setValue  |   7832   |         |
-| HW-SPI |  getValue  |    884   |         |  cached value
-| SW-SPI |  setValue  | 102264   |         |
-| SW-SPI |  getValue  |    884   |         |  cached value
+|  mode  |  function       |  UNO R3  |  ESP32  |  notes  |
+|:------:|:----------------|:--------:|:-------:|:--------|
+| HW-SPI |  setValue       |  15404   |         |
+| HW-SPI |  getValue       |    884   |         |  cached value
+| HW-SPI |  setPercentage  |  93764   |         |
+|        |                 |          |         |
+| SW-SPI |  setValue       | 204332   |         |
+| SW-SPI |  getValue       |    884   |         |  cached value
+| HW-SPI |  setPercentage  | 282692   |         |
 
-Note: 7832 micros for 1000 calls, means the max update speed 
-is in the order of 120k calls per second in theory. 
+
+Note: 15404 micros for 1000 calls, means the max update speed 
+is in the order of 60k calls per second in theory. 
 In practice one needs to calculate values or read them from some source,
 or do other tasks. So actual speeds depends on your project.
+
+The setPercentage and setVoltage functions have additional overhead 
+due to the use of float math.
 
 
 ## Interface
@@ -181,9 +188,12 @@ Has no effect on software SPI.
 
 #### Could
 
-- **getLastUpdate()** track millis?
-- if new value == cached value skip?
+- **getLastUpdate()** track millis
+- if new value == cached value skip
 - optimize AVR SW SPI
+- optimize float math setPercentage() and setVoltage()
+  - calculate and cache the conversion Pfactor and Vfactor. (8 bytes)
+  - remove range test as setValue() does this?
 - test SW-SPI with 0x0800 mask (clock only 12 bits does that work).
 - add examples
 

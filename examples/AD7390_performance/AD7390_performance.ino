@@ -1,7 +1,7 @@
 //
 //    FILE: AD7390_performance.ino
 //  AUTHOR: Rob Tillaart
-// PURPOSE: demo
+// PURPOSE: measure primary performance 
 //     URL: https://github.com/RobTillaart/AD7390
 
 
@@ -11,10 +11,10 @@ uint32_t start, stop;
 
 
 //  select, reset, data, clock == SOFTWARE SPI
-//  AD7390 myDAC(6, 7, 11, 13);
+AD7390 myDAC(6, 7, 11, 13);
 
 //  select, reset, &SPI === HW SPI UNO clock = 13, data = 11
-AD7390 myDAC(6, 7, &SPI);
+// AD7390 myDAC(6, 7, &SPI);
 
 
 void setup()
@@ -48,7 +48,7 @@ void test_timing()
   start = micros();
   for (int i = 0; i < 1000; i++)
   {
-    myDAC.setValue(i++);
+    myDAC.setValue(i);
   }
   stop = micros();
   Serial.print("1000 x setValue():\t");
@@ -65,6 +65,18 @@ void test_timing()
   Serial.print("1000 x getValue():\t");
   Serial.println(stop - start);
   delay(10);
+
+    start = micros();
+  for (int i = 0; i < 1000; i++)
+  {
+    myDAC.setPercentage(i * 0.1);
+  }
+  stop = micros();
+  Serial.print("1000 x setPercentage():\t");
+  Serial.println(stop - start);
+  delay(10);
+
+
 }
 
 
