@@ -1,5 +1,5 @@
 //
-//    FILE: AD7390_demo.ino
+//    FILE: AD7390_performance.ino
 //  AUTHOR: Rob Tillaart
 // PURPOSE: demo
 //     URL: https://github.com/RobTillaart/AD7390
@@ -11,10 +11,10 @@ uint32_t start, stop;
 
 
 //  select, reset, data, clock == SOFTWARE SPI
-AD7390 myDAC(6, 7, 11, 13);
+//  AD7390 myDAC(6, 7, 11, 13);
 
 //  select, reset, &SPI === HW SPI UNO clock = 13, data = 11
-// AD7390 myDAC(6, 7, &SPI);
+AD7390 myDAC(6, 7, &SPI);
 
 
 void setup()

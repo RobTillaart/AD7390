@@ -1,7 +1,7 @@
 //
 //    FILE: AD7390_setVoltage.ino
 //  AUTHOR: Rob Tillaart
-// PURPOSE: demo
+// PURPOSE: demo voltage functions
 //     URL: https://github.com/RobTillaart/AD7390
 
 
